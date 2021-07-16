@@ -5,7 +5,7 @@
 #ifdef WINDOWS
 #define FORMAT_FILETIME "%I64u"
 #else
-#define FORMAT_FILETIME "%lu"
+#define FORMAT_FILETIME "%lld"
 #endif
 
 typedef int64_t FileModifyTime;

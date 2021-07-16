@@ -167,6 +167,8 @@ void moduleManagerInitialize(ModuleManager& manager)
 		manager.environment.compileTimeBuildCommand.arguments = {
 		    {ProcessCommandArgumentType_String, "-g"},
 		    {ProcessCommandArgumentType_String, "-c"},
+			{ProcessCommandArgumentType_String, "-std=c++11"},
+			{ProcessCommandArgumentType_String, "-Wc++11-extensions"},
 		    {ProcessCommandArgumentType_SourceInput, EmptyString},
 		    {ProcessCommandArgumentType_String, "-o"},
 		    {ProcessCommandArgumentType_ObjectOutput, EmptyString},
@@ -177,9 +179,24 @@ void moduleManagerInitialize(ModuleManager& manager)
 		manager.environment.compileTimeLinkCommand.fileToExecute = defaultCompilerLinker;
 		manager.environment.compileTimeLinkCommand.arguments = {
 		    {ProcessCommandArgumentType_String, "-shared"},
-		    {ProcessCommandArgumentType_String, "-o"},
+			{ProcessCommandArgumentType_String, "-o"},
 		    {ProcessCommandArgumentType_DynamicLibraryOutput, EmptyString},
-		    {ProcessCommandArgumentType_ObjectInput, EmptyString}};
+		    {ProcessCommandArgumentType_ObjectInput, EmptyString},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Build.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Converters.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/DynamicLoader.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Evaluator.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/FileUtilities.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/GeneratorHelpers.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Generators.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Logging.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/ModuleManager.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/OutputPreambles.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/RunProcess.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Tokenizer.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Utilities.cpp.o"},
+			{ProcessCommandArgumentType_String, "cakelisp_cache/Bootstrap/Writer.cpp.o"}
+			};
 
 		// Note that this command must match the compilation command to be compatible, see
 		// https://gcc.gnu.org/onlinedocs/gcc/Precompiled-Headers.html

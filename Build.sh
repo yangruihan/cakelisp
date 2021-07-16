@@ -14,7 +14,7 @@ if test -f "$CAKELISP_BOOTSTRAP_BIN"; then
 else
 	echo "$CAKELISP_BOOTSTRAP_BIN does not exist. Building bootstrap executable manually"
 	mkdir -p bin
-	$CC -c \
+	$CC -std=c++11 -c \
 		src/Tokenizer.cpp \
 		src/Evaluator.cpp \
 		src/Utilities.cpp \
@@ -33,7 +33,7 @@ else
 		-DUNIX || exit $?
 	# Need -ldl for dynamic loading, --export-dynamic to let compile-time functions resolve to
 	# Cakelisp symbols
-	$LINK -o $CAKELISP_BOOTSTRAP_BIN *.o -ldl -Wl,--export-dynamic || exit $?
+	$LINK -o $CAKELISP_BOOTSTRAP_BIN *.o -ldl -rdynamic || exit $?
 	rm *.o
 	echo "Built $CAKELISP_BOOTSTRAP_BIN successfully. Now building with Cakelisp"
 	$CAKELISP_BOOTSTRAP_BIN Bootstrap.cake || exit $?

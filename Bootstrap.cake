@@ -25,7 +25,7 @@
 ;; Cakelisp dynamically loads compile-time code
 (add-library-dependency "dl")
 ;; Compile-time code can call much of Cakelisp. This flag exposes Cakelisp to dynamic libraries
-(add-linker-options "--export-dynamic")
+(add-compiler-link-options "-rdynamic")
 
 ;; Use separate build configuration in case other things build files from src/
 (add-build-config-label "Bootstrap")
